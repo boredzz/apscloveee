@@ -1,0 +1,23 @@
+Cloudflare Pages settings for this GitHub upload
+
+Framework preset:
+None
+
+Build command:
+npm run build
+
+Build output directory:
+/
+
+D1 binding:
+Variable name: DB
+Database name: apsite
+Database ID: 4108ce12-cf77-47c1-8927-43d65030d036
+
+After the Pages project is created:
+1. Go to Storage & Databases > D1 SQL database > apsite > Console.
+2. Open schema.sql from this repo.
+3. Paste all of schema.sql into the D1 Console and run it once.
+
+Do not use drag-and-drop upload for this version.
+Use GitHub connected to Cloudflare Pages so the functions/api files deploy.

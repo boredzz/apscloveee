@@ -1,0 +1,14 @@
+{
+  "name": "ap-micro-study",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "echo No build required",
+    "dev": "wrangler pages dev .",
+    "deploy": "wrangler pages deploy . --project-name ap-micro-study",
+    "db:init": "wrangler d1 execute apsite --file=./schema.sql"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

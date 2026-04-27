@@ -1,0 +1,8 @@
+name = "ap-micro-study"
+compatibility_date = "2026-04-28"
+pages_build_output_dir = "."
+
+[[d1_databases]]
+binding = "DB"
+database_name = "apsite"
+database_id = "4108ce12-cf77-47c1-8927-43d65030d036"
