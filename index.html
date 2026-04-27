@@ -2827,8 +2827,10 @@
       headers: { "content-type": "application/json", ...(options.headers || {}) },
       ...options
     });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || data.ok === false) throw new Error(data.error || "Request failed.");
+    const text = await res.text();
+    let data = {};
+    try { data = text ? JSON.parse(text) : {}; } catch (error) { data = { error: text || res.statusText }; }
+    if (!res.ok || data.ok === false) throw new Error(data.error || `Request failed with status ${res.status}.`);
     return data;
   }
   async function registerAccount() {
