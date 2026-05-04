@@ -13,7 +13,7 @@ export async function onRequestPost({ request, env }) {
 export async function onRequestPut({ request, env }) {
   const auth = await requireAdmin(request, env); if (auth.error) return auth.error;
   const b=await readJson(request); if(!b.id) return json({ok:false,error:'id required'},400);
-  await env.DB.prepare("UPDATE categories SET parent_id=?, title=?, slug=?, description=?, sort_order=?, status=?, updated_at=CURRENT_TIMESTAMP WHERE id=?").bind(b.parent_id||null,String(b.title||'Untitled').trim(),slugify(b.slug||b.title),b.description||'',Number(b.sort_order)||0,b.status||'published',b.id).run();
+  await env.DB.prepare("UPDATE categories SET parent_id=?, title=?, slug=?, description=?, sort_order=?, status=? WHERE id=?").bind(b.parent_id||null,String(b.title||'Untitled').trim(),slugify(b.slug||b.title),b.description||'',Number(b.sort_order)||0,b.status||'published',b.id).run();
   return json({ok:true});
 }
 export async function onRequestDelete({ request, env }) {
