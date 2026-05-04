@@ -78,3 +78,21 @@ Then open:
 - `functions/api` - Cloudflare Pages Functions API
 - `schema.sql` - D1 schema
 - `wrangler.toml` - Cloudflare D1 binding
+
+## Pull Request / Merge Troubleshooting
+
+If GitHub says you cannot open a pull request or reports merge setup issues, verify local git remote/branch wiring first:
+
+```bash
+git remote -v
+git branch -vv
+```
+
+If `origin` is missing, add it and push your working branch:
+
+```bash
+git remote add origin <your-github-repo-url>
+git push -u origin work
+```
+
+Then open the PR from `work` into your default branch (`main` or `master`).
