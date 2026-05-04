@@ -1,1 +1,5 @@
-#admin-root .card{margin-bottom:1rem}
+body{background:#090909!important;color:#f4f4f5}
+#admin-root .card{margin-bottom:1rem;background:#111!important;border:1px solid rgba(255,255,255,.09)}
+.admin-row{display:flex;gap:.6rem;align-items:center;padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.admin-row span{flex:1}
+.admin-row input,.admin-row select{max-width:320px;background:#0d0d0d;color:#fff;border:1px solid rgba(255,255,255,.14)}
