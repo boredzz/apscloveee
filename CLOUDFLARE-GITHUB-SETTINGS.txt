@@ -21,3 +21,4 @@ After the Pages project is created:
 
 Do not use drag-and-drop upload for this version.
 Use GitHub connected to Cloudflare Pages so the functions/api files deploy.
+
