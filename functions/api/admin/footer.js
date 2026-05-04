@@ -3,7 +3,7 @@ export async function onRequestGet({ request, env }) {
   const auth=await requireAdmin(request, env); if(auth.error) return auth.error;
   const cols=(await env.DB.prepare("SELECT * FROM footer_columns ORDER BY sort_order,id").all()).results||[];
   const links=(await env.DB.prepare("SELECT * FROM footer_links ORDER BY sort_order,id").all()).results||[];
-  return json({ok:true,columns:cols.map(c=>({...c,links:links.filter(l=>l.column_id===c.id)}))});
+  return json({ok:true,columns:cols.map(c=>({...c,links:links.filter(l=>l.column_id==c.id)}))});
 }
 export async function onRequestPost({ request, env }) {
   const auth=await requireAdmin(request, env); if(auth.error) return auth.error;
