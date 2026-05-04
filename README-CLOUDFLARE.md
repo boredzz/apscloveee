@@ -1,54 +1,80 @@
-# Cloudflare Setup
+# AP Notes Platform - Cloudflare Pages + D1
 
-This app now uses Cloudflare Pages Functions for login, so do not use the drag-and-drop uploader.
+This project keeps the original static Cloudflare Pages structure and adds a dark educational notes platform with categories, notes, search, bookmarks, progress tracking, and an admin dashboard.
 
-Use Wrangler from the terminal.
+## Cloudflare settings
 
-## Files That Must Be Deployed
+Use the existing Cloudflare Pages settings:
 
-```text
-index.html
-404.html
-functions/
-schema.sql
-```
+- Framework preset: None
+- Build command: `npm run build`
+- Build output directory: `/`
+- Functions directory: `/functions/api`
+- D1 binding variable: `DB`
+- D1 database name: `apsite`
+- D1 database ID: `4108ce12-cf77-47c1-8927-43d65030d036`
 
-`wrangler.toml` contains the D1 binding for Wrangler deploys.
-
-## Install
+## Local setup
 
 ```bash
 npm install
-```
-
-Then log in:
-
-```bash
-npx wrangler login
-```
-
-## D1 Setup
-
-Run the schema:
-
-```bash
 npm run db:init
+npm run dev
 ```
 
 ## Deploy
+
+Push to the connected GitHub repository and let Cloudflare Pages build with:
+
+```bash
+npm run build
+```
+
+Or deploy manually:
 
 ```bash
 npm run deploy
 ```
 
-After deployment, the login API routes should work:
+## Admin account
 
-```text
-/api/register
-/api/login
-/api/logout
-/api/me
-/api/progress
+The first registered user automatically becomes `admin`.
+
+If you already have users and need to promote one manually, run:
+
+```sql
+UPDATE users SET role = 'admin' WHERE username = 'YOUR_USERNAME';
 ```
 
+Then open:
 
+```text
+/admin is handled inside the single page app by clicking Admin Panel after login.
+```
+
+## Main features
+
+- Dark responsive study platform
+- Collapsible nested categories
+- Global search with suggestions
+- Notes open inside the website, not PDFs
+- Quick summaries
+- Exam Mode
+- Bookmarks
+- Progress tracking
+- Flashcards
+- MCQs with explanations
+- Admin dashboard
+- Category manager
+- Rich text note editor
+- Draft/published notes
+- Version storage on note edits
+- Editable footer manager
+- User role management
+
+## Important files
+
+- `index.html` - main app and admin UI
+- `functions/api` - Cloudflare Pages Functions API
+- `schema.sql` - D1 schema
+- `wrangler.toml` - Cloudflare D1 binding
