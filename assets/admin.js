@@ -1,0 +1,3 @@
+const root=document.getElementById('admin-root');
+async function boot(){const me=await fetch('/api/me').then(r=>r.json()).catch(()=>({}));if(me.user?.role!=='admin'){root.innerHTML='<div class="card"><h2>Admin access required</h2><p>Please login with an admin account on the main site.</p></div>';return;}const stats=await fetch('/api/admin/stats').then(r=>r.json()).catch(()=>({stats:{}}));root.innerHTML=`<div class='grid'><div class='card'><h3>Total notes</h3><p>${stats.stats?.notes??0}</p></div><div class='card'><h3>Published</h3><p>${stats.stats?.published??0}</p></div><div class='card'><h3>Drafts</h3><p>${stats.stats?.drafts??0}</p></div><div class='card'><h3>Categories</h3><p>${stats.stats?.categories??0}</p></div></div>`;}
+boot();
